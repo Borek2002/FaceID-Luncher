@@ -15,7 +15,7 @@ def create_table():
 def add_user(username, password):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
-    query = "INSERT INTO login (username, password) VALUES (?, ?)"
+    query = "INSERT OR IGNORE INTO login (username, password) VALUES (?, ?)"
     cursor.execute(query, (username, password))
     conn.commit()
 

@@ -92,6 +92,8 @@ class LoginPage(tk.Frame):
 class RegPage(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
+        userLoginInput=tk.StringVar()
+        userPassInput=tk.StringVar()
 
         #background image
         self.bg_image = ImageTk.PhotoImage(Image.open(BACKGROUNDIMG))
@@ -112,7 +114,21 @@ class RegPage(tk.Frame):
         loginButton.place(x=100,y=400)
         startButton.place(x=400,y=400)
 
+        #registry form
+        loginText=tk.Label(self,text="Username",font = ((FONT),15))
+        loginText.place(x=80,y=100,height=30,width=100)
+        loginInput=tk.Entry(self,textvariable=userLoginInput)
+        loginInput.place(x=200,y=100,height=30)
 
+        passText=tk.Label(self,text="Password",font = ((FONT),15))
+        passText.place(x=80,y=140,height=30,width=100)
+        passInput=tk.Entry(self,textvariable=userPassInput)
+        passInput.place(x=200,y=140,height=30)
+
+        nextButton=tk.Button(self,height=BUTTONHEIGHT,width=BUTTONWIDTH, text="Next -> FaceID",
+                             command=lambda:[ db.add_user(userLoginInput.get(),userPassInput.get()), master.switch_frame(StartPage)]
+                            ,bg="white",fg="black",relief="solid", borderwidth=2,font = ((FONT),10))
+        nextButton.place(x=150, y=180)
 
 app = MainGUI()
 app.mainloop()
