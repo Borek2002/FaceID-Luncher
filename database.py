@@ -1,6 +1,7 @@
 import sqlite3
 
 
+
 def create_table():
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
@@ -29,13 +30,7 @@ def check_user(username, password):
     print('[DEBUG][check] result:', result)
     return result
 
-def login(username, password):
-        if check_user(username, password):
-            print("Username correct!")
-            print("Password correct!")
-            print("Logging in...")
-        else:
-            print("Something wrong")
+
 
 # --- main ---
 
